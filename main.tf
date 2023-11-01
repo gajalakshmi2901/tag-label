@@ -20,7 +20,6 @@ locals {
     stage       = var.stage == null ? var.context.stage : var.stage
     name        = var.name == null ? var.context.name : var.name
     delimiter   = var.delimiter == null ? var.context.delimiter : var.delimiter
-    tags       = merge(var.context.tags, var.tags)
 
     label_order         = var.label_order == null ? var.context.label_order : var.label_order
     regex_replace_chars = var.regex_replace_chars == null ? var.context.regex_replace_chars : var.regex_replace_chars
@@ -64,7 +63,6 @@ locals {
     tenant      = local.tenant
     environment = local.environment
     stage       = local.stage
-    name       = local.id
   }
 
   id_context = {
@@ -88,8 +86,6 @@ locals {
     stage               = local.stage
     name                = local.name
     delimiter           = local.delimiter
-    tags                = local.tags
-    additional_tag_map  = local.additional_tag_map
     label_order         = local.label_order
     regex_replace_chars = local.regex_replace_chars
     id_length_limit     = local.id_length_limit

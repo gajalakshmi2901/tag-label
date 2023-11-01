@@ -1,12 +1,4 @@
-output "id" {
-  value       = local.enabled ? local.id : ""
-  description = "Disambiguated ID string restricted to `id_length_limit` characters in total"
-}
 
-output "id_full" {
-  value       = local.enabled ? local.id_full : ""
-  description = "ID string not restricted in length"
-}
 
 output "enabled" {
   value       = local.enabled
@@ -57,10 +49,7 @@ output "regex_replace_chars" {
   description = "The regex_replace_chars actually used to create the ID"
 }
 
-output "id_length_limit" {
-  value       = local.id_length_limit
-  description = "The id_length_limit actually used to create the ID, with `0` meaning unlimited"
-}
+
 
 output "normalized_context" {
   value       = local.output_context
