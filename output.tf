@@ -34,11 +34,6 @@ output "delimiter" {
   value       = local.enabled ? local.delimiter : ""
   description = "Delimiter between `namespace`, `tenant`, `environment`, `stage`, `name` and `attributes`"
 }
-
-output "tags" {
-  value       = local.enabled ? local.tags : {}
-  description = "Normalized Tag map"
-}
 output "label_order" {
   value       = local.label_order
   description = "The naming order actually used to create the ID"
