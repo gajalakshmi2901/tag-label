@@ -57,10 +57,6 @@ locals {
   id_length_limit  = local.input.id_length_limit == null ? local.defaults.id_length_limit : local.input.id_length_limit
   label_key_case   = local.input.label_key_case == null ? local.defaults.label_key_case : local.input.label_key_case
   label_value_case = local.input.label_value_case == null ? local.defaults.label_value_case : local.input.label_value_case
-
-
-  tags = merge(local.generated_tags, local.input.tags)
-
    
 
   tags_context = {
@@ -84,13 +80,6 @@ locals {
   id_full = join(local.delimiter, local.labels)
   # Create a truncated ID if needed
   delimiter_length = length(local.delimiter)
-  # Truncate the ID and ensure a single (not double) trailing delimiter
-  id_truncated = local.id_truncated_length_limit <= 0 ? "" : "${trimsuffix(substr(local.id_full, 0, local.id_truncated_length_limit), local.delimiter)}${local.delimiter}"
-  # Support usages that disallow numeric characters. Would prefer tr 0-9 q-z but Terraform does not support it.
-  id       = local.id_length_limit != 0 && length(local.id_full) > local.id_length_limit ? local.id_short : local.id_full
-
-
-  # Context of this label to pass to other label modules
   output_context = {
     enabled             = local.enabled
     namespace           = local.namespace

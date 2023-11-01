@@ -15,7 +15,6 @@ variable "context" {
     label_key_case      = null
     label_value_case    = null
     descriptor_formats  = {}
-    labels_as_tags = ["unset"]
   }
   description = <<-EOT
     Single object for setting entire context at once.
